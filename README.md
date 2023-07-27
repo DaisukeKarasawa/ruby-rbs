@@ -127,9 +127,9 @@ $ steep check
 
 ## 参考ページ
 
-・[Ruby3 で導入される静的型チェッカーのしくみ　まつもとゆきひろ氏が RubyKaigi 2019 で語ったこと]　(https://logmi.jp/tech/articles/321280)
+・[Ruby3 で導入される静的型チェッカーのしくみ　まつもとゆきひろ氏が RubyKaigi 2019 で語ったこと](https://logmi.jp/tech/articles/321280)
 
-・[社内 Ruby3 新規機能勉強会資料 ~RBS とは~](https://qiita.com/getty104/items/9a2a20a6e170ab53191c)
+・[社内 Ruby3 新規機能勉強会資料 〜RBS とは〜](https://qiita.com/getty104/items/9a2a20a6e170ab53191c)
 
 ・[Steep を使って Ruby の型検査に入門する](https://qiita.com/kettomorrow/items/8ccada8a4c9eac85b7ad)
 
