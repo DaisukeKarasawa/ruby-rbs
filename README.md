@@ -1,6 +1,6 @@
-## Ruby の型付け RBS 基礎
+# Ruby の型付け RBS 基礎
 
-### RBS って何それ美味しいの？
+## RBS って何それ美味しいの？
 
 [RBS](https://github.com/ruby/rbs)（Ruby Signature）とは、Ruby3.0 から導入された Ruby の型の定義情報を提供する仕組み。
 RBS は言語の定義の役割を担っており、他のライブラリと組み合わせることで、Ruby の型付けを可能にしている。
@@ -15,7 +15,9 @@ RBS は言語の定義の役割を担っており、他のライブラリと組�
 
   [Steep](https://github.com/soutaro/steep/tree/master)：RBS で宣言された Ruby コードのプログラム構造をチェックするライブラリ。
 
-### セッティング（コマンドライン）
+---
+
+## セッティング（コマンドライン）
 
 - インストール
 
@@ -31,7 +33,9 @@ $ gem install steep
 $ steep init    # Steepfile の生成
 ```
 
-### 使用法
+---
+
+## 使用法
 
 例として以下のようなプログラムを用意する。
 
@@ -119,7 +123,9 @@ $ steep check
 
   ・Steep の検査は、呼び出しが記述されているコードが対象となっている。
 
-### 参考ページ
+---
+
+## 参考ページ
 
 ・[Ruby3 で導入される静的型チェッカーのしくみ　まつもとゆきひろ氏が RubyKaigi 2019 で語ったこと]　(https://logmi.jp/tech/articles/321280)
 
