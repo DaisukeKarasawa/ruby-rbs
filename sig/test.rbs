@@ -1,0 +1,7 @@
+# TypeProf 0.21.7
+
+# Classes
+class Test
+  def self.myfunc: (String str) -> String
+  def self.foo: (Integer n) -> String?
+end

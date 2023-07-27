@@ -1,0 +1,9 @@
+# TypeProf 0.21.7
+
+# Classes
+class User
+  attr_reader login: String
+  attr_reader email: String
+
+  def initialize: (login: String, email: String) -> void
+end

@@ -1,0 +1,10 @@
+# TypeProf 0.21.7
+
+# Classes
+class Person
+  attr_reader name: String
+  attr_reader gender: String
+  
+  def initialize: (name: String, gender: String) -> void
+  def call_gender: -> String
+end

@@ -1,0 +1,14 @@
+# TypeProf 0.21.7
+
+# Classes
+class Student
+  attr_reader name: String
+  attr_reader number: String
+  attr_accessor grade: Integer
+  attr_accessor credit: Integer
+
+  def initialize: (String name, Integer grade, String number, Integer credit) -> void
+  def up_grade: -> void
+  def get_credit: (Integer n) -> String
+  def get_student: (String str) -> String?
+end
