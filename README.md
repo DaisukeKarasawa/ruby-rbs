@@ -97,7 +97,7 @@ $ typeprof 'Rubyファイル名' > 'RBSファイル名'
 $ typprof src/origin.rb > sig/origin.rbs
 ```
 
-### - `rbs`ファイルのデフォルト -
+#### - `rbs`ファイルのデフォルト -
 
 ```
 class クラス名
