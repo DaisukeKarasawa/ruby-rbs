@@ -5,17 +5,14 @@
 [RBS](https://github.com/ruby/rbs)（Ruby Signature）とは、Ruby3.0 から導入された Ruby の型の定義情報を提供する仕組み。
 RBS は言語の定義の役割を担っており、他のライブラリと組み合わせることで、Ruby の型付けを可能にしている。
 
-大規模プロジェクトにおいて、静的型付け言語の持つ「保守性」という強みを、動的型付け言語の静的解析といったアプローチで Ruby でも「保守性」実現できるようにした。
-また、Ruby のアプローチは既存の Ruby の書き心地を重視すべく、「型の情報は既存の Ruby コードとは完全に分離する」という形をとっている。
-よって、「シンプルさ」「書いていて楽しい」といった Ruby 本来の持ち味を活かし続けながらパフォーマンス向上を実現している。
+大規模プロジェクトにおいて、静的型付け言語の持つ「保守性」という強みを、動的型付け言語の静的解析といったアプローチで Ruby でも実現できるようにした。
+また、「普通に書いている Ruby のプログラムが、型宣言を書かなくても普通に型チェックができるようになる」という形をとることで、Ruby 本来の **"コードを書く楽しさ"** という持ち味を活かし続けながらパフォーマンス向上を実現している。
 
 - 使用するライブラリ
 
   [TypeProf](https://github.com/ruby/typeprof)：型情報をもたない Ruby コードを型レベルで解析し、メソッドの方を推測するライブラリ。
 
   [Steep](https://github.com/soutaro/steep/tree/master)：RBS で宣言された Ruby コードのプログラム構造をチェックするライブラリ。
-
----
 
 ## セッティング（コマンドライン）
 
@@ -33,17 +30,16 @@ $ gem install steep
 $ steep init    # Steepfile の生成
 ```
 
----
-
 ## 使用法
 
-例として以下のようなプログラムを用意する。
+例として、以下のような通常の Ruby プログラムを用意する。
 
 ```./src/origin.rb
 class Student
     attr_reader :name, :number
     attr_accessor :grade, :credit
 
+    # 生徒名, 学年, 学籍番号, 取得単位
     def initialize(name, grade, number, credit)
         @name = name
         @grade = grade
@@ -51,16 +47,19 @@ class Student
         @credit = credit
     end
 
+    # 取得単位が 40 * 学年 より多ければ、進級できる
     def up_grade
         base = 40
         @grade += 1 if @credit > (base * @grade)
     end
 
+    # 単位数の増加
     def get_credit(n)
         @credit += n
         "単位が#{n}増えました"
     end
 
+    # 学生情報の取得
     def get_student(str)
         if str == @number
             "#{@name}は、現在#{@grade}年生です"
@@ -71,7 +70,7 @@ class Student
 end
 ```
 
-この場合以下のような`rbs`ファイルを作成することができる。
+上記の場合、以下のような`rbs`ファイルを作成することができる。
 
 ```./sig/origin.rbs
 # Classes
@@ -91,11 +90,25 @@ end
 また、デフォルトの`rbs`ファイルはコマンドラインから自動生成できる。
 
 ```
-# 書き方
+# デフォルト
 $ typeprof 'Rubyファイル名' > 'RBSファイル名'
 
 # 例
 $ typprof src/origin.rb > sig/origin.rbs
+```
+
+**`rbs`ファイルのデフォルト**
+
+```
+class クラス名
+    # アクセサメソッド
+    attr_accessor '変数名': '型名'
+
+    # メソッド
+    def initialize: ('型名' '変数名', ...) -> '型名'    # 通常表記
+    def 'メソッド名': -> '型名'                         # 引数を取らないメソッド
+    def 'メソッド名': -> '型名'?                        # 戻り値が、指定した型かnilであるメソッド
+end
 ```
 
 宣言した Ruby の型をチェックするには Steepfile を作成したのちに、以下のようなコードを記述する。
@@ -122,8 +135,6 @@ $ steep check
   ・rbs は自身で書くこともできるが、typeprof を使用することでデフォルトコードを自動生成できる。
 
   ・Steep の検査は、呼び出しが記述されているコードが対象となっている。
-
----
 
 ## 参考ページ
 
