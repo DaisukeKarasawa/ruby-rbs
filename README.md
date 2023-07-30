@@ -97,7 +97,7 @@ $ typeprof 'Rubyファイル名' > 'RBSファイル名'
 $ typprof src/origin.rb > sig/origin.rbs
 ```
 
-**`rbs`ファイルのデフォルト**
+**- `rbs`ファイルのデフォルト -**
 
 ```
 class クラス名
@@ -111,7 +111,7 @@ class クラス名
 end
 ```
 
-宣言した Ruby の型をチェックするには Steepfile を作成したのちに、以下のようなコードを記述する。
+宣言した Ruby の型をチェックするには `Steepfile` を作成したのちに、以下のようなコードを記述する。
 
 ```./Steepfile
 target :src do
